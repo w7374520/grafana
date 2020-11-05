@@ -13,13 +13,13 @@ import (
 func (im *InternalMetricsService) readSettings() error {
 	var section, err = im.Cfg.Raw.GetSection("metrics")
 	if err != nil {
-		return fmt.Errorf("unable to find metrics config section %w", err)
+		return fmt.Errorf("unable to find metrics config section: %w", err)
 	}
 
 	im.intervalSeconds = section.Key("interval_seconds").MustInt64(10)
 
 	if err := im.parseGraphiteSettings(); err != nil {
-		return fmt.Errorf("unable to parse metrics graphite section, %w", err)
+		return fmt.Errorf("unable to parse metrics graphite section: %w", err)
 	}
 
 	return nil

@@ -193,12 +193,12 @@ func (w *FileLogWriter) DoRotate() error {
 		// close fd before rename
 		// Rename the file to its newfound home
 		if err = os.Rename(w.Filename, fname); err != nil {
-			return fmt.Errorf("rotate: %w", err)
+			return fmt.Errorf("rotate: %s", err)
 		}
 
 		// re-start logger
 		if err = w.StartLogger(); err != nil {
-			return fmt.Errorf("rotate StartLogger: %w", err)
+			return fmt.Errorf("rotate StartLogger: %s", err)
 		}
 
 		go w.deleteOldLog()
