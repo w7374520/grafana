@@ -284,8 +284,8 @@ func TestAccountDataAccess(t *testing.T) {
 					So(err, ShouldBeNil)
 					So(len(query.Result), ShouldEqual, 3)
 
-					dash1 := insertTestDashboard("1 test dash", ac1.OrgId, 0, false, "prod", "webapp")
-					dash2 := insertTestDashboard("2 test dash", ac3.OrgId, 0, false, "prod", "webapp")
+					dash1 := insertTestDashboard(t, "1 test dash", ac1.OrgId, 0, false, "prod", "webapp")
+					dash2 := insertTestDashboard(t, "2 test dash", ac3.OrgId, 0, false, "prod", "webapp")
 
 					err = testHelperUpdateDashboardAcl(dash1.Id, models.DashboardAcl{DashboardID: dash1.Id, OrgID: ac1.OrgId, UserID: ac3.Id, Permission: models.PERMISSION_EDIT})
 					So(err, ShouldBeNil)
